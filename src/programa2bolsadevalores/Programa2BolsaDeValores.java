@@ -27,8 +27,8 @@ Obter um char a partir da entrada utilizando System.in.read() em Java
 Obter um gráfico a partir da entrada utilizando InputStreamReader() em Java
         */
          
-        int acaolucromil,acaolucromenor200;
-        double valorCompraAcao, valorVendaAcao;
+        int acaolucromil = 0,acaolucromenor200 = 0;
+        double valorCompraAcao, valorVendaAcao, valorLucroPrejuizo;
         char nomeacao;
         
         
@@ -43,21 +43,24 @@ Obter um gráfico a partir da entrada utilizando InputStreamReader() em Java
            
              System.out.println("Digite sua a Letra da sua Ação: ");
              nomeacao = valorinicial.next().charAt(0);
-             
+           
+             if(nomeacao != 'f'){
+                 
              System.out.println("\nDigite o Valor de compra desta Ação: ");
              valorCompraAcao = valorinicial.nextDouble();
              
-             System.out.println("\nDigite sua a Letra da sua Ação: ");
+             System.out.println("\nDigite o valor de Venda da sua Ação: ");
              valorVendaAcao = valorinicial.nextDouble();
              
              System.out.println("Ação : "+ nomeacao+" valor de Compra: R$ "+valorCompraAcao+"  Valor"
              + "de Venda: R$ "+valorVendaAcao);
-             
-                if((valorCompraAcao - valorVendaAcao)> 1000){
-                     acaolucromil++;
-                    }else if((valorCompraAcao - valorVendaAcao)<200){
-                    acaolucromenor200++;
+             valorLucroPrejuizo = valorVendaAcao - valorCompraAcao;
+                if(valorLucroPrejuizo > 1000){
+                     acaolucromil = acaolucromil + 1;
+                    }else if(valorLucroPrejuizo < 200){
+                    acaolucromenor200 = acaolucromenor200 + 1;
                  }             
+             }
          }while(nomeacao!='f');
          
          System.out.println("Total de Ações\n Valor Lucro Acima de R$ 1 mil reais: "+acaolucromil+"\n"
